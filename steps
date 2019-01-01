@@ -1,0 +1,22 @@
+Steps to flash ESP8266
+
+1)Install picocom & esptool.py
+>sudo apt-get install
+>sudo pip install esptool
+
+2) Download Firmware
+https://micropython.org/downloadesp8266
+
+3) erase_flash
+>esptool.py --port /dev/ttyUSB0 erase_flash
+
+4) write_flash
+>esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=detect 0 esp8266-20170108-v1.8.7.bin
+
+5) Run picocom
+>picocom /dev/ttyUSB0 -b115200
+
+6) Check 
+
+import esp
+esp.check_fw()
